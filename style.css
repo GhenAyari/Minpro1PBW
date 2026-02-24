@@ -74,3 +74,13 @@ body {
 .tracking-wide {
     letter-spacing: 0.05em;
 }
+
+/* Efek Hover untuk Weapon of Choice */
+.icon-hover {
+    transition: all 0.3s ease;
+}
+.icon-hover:hover {
+    background-color: rgba(59, 130, 246, 0.1) !important;
+    border-color: #3b82f6 !important;
+    transform: translateY(-4px);
+}
