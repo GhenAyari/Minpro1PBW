@@ -15,32 +15,42 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-transparent py-3">
     <div class="container">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-        <ul class="navbar-nav">
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center text-lg-start">
           <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
           <li class="nav-item"><a class="nav-link" href="#certificates">Certificates</a></li>
         </ul>
-      </div>
-      <div class="d-none d-lg-block dropdown">
-        <button class="btn btn-primary rounded-pill px-4 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Contact Me
-        </button>
-        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark shadow border-secondary border-opacity-25 mt-2">
-          <li>
-            <a class="dropdown-item py-2" href="https://wa.me/62895700181460" target="_blank">
-              <i class="bi bi-whatsapp text-success me-2"></i> WhatsApp
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item py-2" href="https://instagram.com/ghendida" target="_blank">
-              <i class="bi bi-instagram text-danger me-2"></i> Instagram
-            </a>
-          </li>
-        </ul>
+
+        <div class="d-flex flex-column flex-lg-row align-items-center gap-3 mt-3 mt-lg-0">
+
+          <button @click="toggleLanguage" class="btn btn-outline-primary rounded-pill px-3 fw-bold">
+            {{ lang === 'en' ? '🇮🇩 ID' : '🇬🇧 EN' }}
+          </button>
+
+          <div class="dropdown">
+            <button class="btn btn-primary rounded-pill px-4 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Contact Me
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark shadow border-secondary border-opacity-25 mt-2">
+              <li>
+                <a class="dropdown-item py-2" href="https://wa.me/62895700181460" target="_blank">
+                  <i class="bi bi-whatsapp text-success me-2"></i> WhatsApp
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item py-2" href="https://instagram.com/ghendida" target="_blank">
+                  <i class="bi bi-instagram text-danger me-2"></i> Instagram
+                </a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
       </div>
     </div>
   </nav>
@@ -48,22 +58,21 @@
   <section id="home" class="container py-5 mt-4">
     <div class="row align-items-center">
       <div class="col-lg-6 mb-5 mb-lg-0">
-                <span class="badge bg-primary bg-opacity-10 text-primary mb-3 px-3 py-2 rounded-pill">
-                    AVAILABLE FOR NEW PROJECTS
-                </span>
+        <span class="badge bg-primary bg-opacity-10 text-primary mb-3 px-3 py-2 rounded-pill">
+            AVAILABLE FOR NEW PROJECTS
+        </span>
         <h1 class="display-4 fw-bold text-white">
           Hi, I am <span class="text-primary">{{ profile.name }}</span>
         </h1>
-        <h2 class="h3 text-secondary mb-4">{{ profile.role }}</h2>
-        <p class="text-light lead mb-5">
-          {{ profile.description }}
+        <h2 class="h3 text-secondary mb-4">{{ content[lang].role }}</h2>
+        <p class="text-light lead mb-5" style="white-space: pre-line;">
+          {{ content[lang].description }}
         </p>
       </div>
       <div class="col-lg-6 text-center">
         <img :src="profile.image" alt="Profile Picture" class="img-fluid rounded-4 shadow-lg" style="max-height: 500px; object-fit: cover;">
       </div>
     </div>
-
   </section>
 
   <section id="about" class="container py-5 mt-5">
@@ -74,14 +83,14 @@
         <h2 class="display-5 fw-bold text-white">About Me</h2>
         <div class="title-underline mt-2 mb-5"></div>
 
-        <h4 class="text-white mb-3">Who I Am</h4>
-        <p>{{ about.paragraph1 }}</p>
-        <p>{{ about.paragraph2 }}</p>
+        <h4 class="text-white mb-3">{{ content[lang].whoIAm }}</h4>
+        <p style="white-space: pre-line;">{{ content[lang].p1 }}</p>
+        <p>{{ content[lang].p2 }}</p>
       </div>
 
       <div class="col-lg-5 mt-5 mt-lg-0">
         <div class="card bg-dark border-secondary border-opacity-25 p-4 rounded-4 h-100">
-          <h4 class="text-white mb-4">Weapon of Choice</h4>
+          <h4 class="text-white mb-4">{{ content[lang].weaponTitle }}</h4>
 
           <div class="row row-cols-2 row-cols-sm-3 g-3 text-center">
             <div class="col" v-for="weapon in weapons" :key="weapon.name">
@@ -108,12 +117,12 @@
     </div>
 
     <div class="row g-4">
-      <div class="col-md-6 col-lg-4" v-for="cert in certificates" :key="cert.title">
+      <div class="col-md-6 col-lg-4" v-for="cert in certificates" :key="cert.image">
         <div class="card h-100 bg-dark border-secondary border-opacity-25 text-white rounded-4 overflow-hidden cert-card">
-          <div class="bg-secondary bg-opacity-25" style="height: 180px;"></div>
+          <img :src="cert.image" class="w-100" style="height: 200px; object-fit: cover; border-bottom: 1px solid rgba(255,255,255,0.1);" alt="Certificate">
           <div class="card-body p-4">
             <div class="d-flex justify-content-between align-items-center mt-auto">
-              <small class="text-muted"><i class="bi bi-calendar"></i> {{ cert.date }}</small>
+              <small class="text-muted"><i class="bi bi-calendar"></i> Issued</small>
               <a href="#" class="text-primary text-decoration-none small">View Credential &rarr;</a>
             </div>
           </div>
@@ -133,56 +142,49 @@
   createApp({
     data() {
       return {
+        lang: 'en', // Menyimpan bahasa yang aktif
+
         profile: {
-          name: 'Ghendida Gantari Ayari', // Sesuaikan dengan namamu
-          role: 'Student',
-          description: 'Information Systems student with a strong interest in Mobile Development and Cloud Computing.\n' +
-                  'Passionate about building scalable mobile applications powered by modern cloud technologies.\n' +
-                  'Continuously learning and improving to create impactful digital solutions.',
-          image: './assets/profile.jpg'
+          name: 'Ghendida Gantari Ayari',
+          image: './assets/profile1.jpg'
         },
-        stats: [
-          { value: '5+', label: 'Years Exp.' },
-          { value: '40+', label: 'Projects Done' },
-          { value: '12', label: 'Certificates' },
-          { value: '99%', label: 'Client Happy' }
-        ],
-        about: {
-          paragraph1: 'I started my journey in technology with curiosity about how applications work behind the scenes.',
-          paragraph2: 'Today, I focus on Mobile Development and Cloud Computing, building projects that combine user-friendly design with scalable systems.\n' +
-                  'I’m continuously learning and exploring new technologies to improve my skills.'
-        },
+
         weapons: [
           { name: 'Java', iconClass: 'devicon-java-plain colored' },
           { name: 'Kotlin', iconClass: 'devicon-kotlin-plain colored' },
           { name: 'Kotlin Multiplatform', iconClass: 'devicon-kotlin-plain colored' },
-          // Karena Devicon belum punya logo resmi Ktor, kita pakai icon Server dari Bootstrap
           { name: 'Python', iconClass: 'devicon-python-plain colored' },
           { name: 'PyTorch', iconClass: 'devicon-pytorch-original colored' },
           { name: 'TensorFlow', iconClass: 'devicon-tensorflow-original colored' }
         ],
-        experience: [
-          {
-            position: 'Senior Frontend Developer',
-            company: 'TechFlow Solutions',
-            year: '2021 — PRESENT',
-            description: 'Led the development of a flagship SaaS platform using Vue 3 and the Composition API.'
-          },
-          {
-            position: 'Web UI Developer',
-            company: 'Creative Digital Agency',
-            year: '2018 — 2021',
-            description: 'Specialized in converting high-fidelity Figma designs into responsive layouts.'
-          }
-        ],
+
         certificates: [
-          { issuer: 'Amazon Web Services', title: 'AWS Certified Solutions Architect', date: 'Issued 2023' },
-          { issuer: 'Google Cloud', title: 'Professional Cloud Architect', date: 'Issued 2023' },
-          { issuer: 'Meta / Coursera', title: 'Meta Front-End Developer', date: 'Issued 2022' },
-          { issuer: 'Cloud Native Foundation', title: 'Certified Kubernetes Administrator', date: 'Issued 2024' },
-          { issuer: 'UX Design Institute', title: 'UI/UX Design Specialization', date: 'Issued 2021' },
-          { issuer: 'DeepLearning.AI', title: 'Deep Learning Specialization', date: 'Issued 2023' }
-        ]
+          { image: './assets/sertifikatContoh.png' },
+        ],
+
+        content: {
+          en: {
+            role: 'Student',
+            description: 'Information Systems student with a strong interest in Mobile Development and Machine Learning.\nPassionate about building intelligent applications that combine user-friendly mobile experiences with data-driven solutions.\nCurrently exploring Kotlin and applied AI development.',
+            whoIAm: 'Who I Am',
+            p1: 'I am an Information Systems student with a strong interest in Mobile Development and Machine Learning.\nI enjoy building intelligent applications that combine seamless mobile experiences with data-driven solutions.',
+            p2: 'Currently building small projects to better understand how AI can enhance mobile applications.',
+            weaponTitle: 'Weapon of Choice',
+          },
+          id: {
+            role: 'Mahasiswa',
+            description: 'Mahasiswa Sistem Informasi dengan minat kuat pada Pengembangan Mobile dan Machine Learning.\nBersemangat membangun aplikasi cerdas yang menggabungkan pengalaman mobile yang ramah pengguna dengan solusi berbasis data.\nSaat ini sedang mengeksplorasi Kotlin dan pengembangan AI terapan.',
+            whoIAm: 'Siapa Saya',
+            p1: 'Saya adalah mahasiswa Sistem Informasi dengan minat kuat pada Pengembangan Mobile dan Machine Learning.\nSaya senang membangun aplikasi cerdas yang menggabungkan pengalaman mobile yang mulus dengan solusi berbasis data.',
+            p2: 'Saat ini sedang membangun proyek-proyek kecil untuk lebih memahami bagaimana AI dapat meningkatkan aplikasi mobile.',
+            weaponTitle: 'Senjata Pilihan',
+          }
+        }
+      }
+    },
+    methods: {
+      toggleLanguage() {
+        this.lang = this.lang === 'en' ? 'id' : 'en';
       }
     }
   }).mount('#app')
