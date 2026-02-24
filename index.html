@@ -1,13 +1,197 @@
 <!DOCTYPE html>
-<html lang="">
-  <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Ghen Ayari</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div id="app">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-transparent py-3">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">
+        <span class="text-primary">&lt;/&gt;</span> Portfolio
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#certificates">Certificates</a></li>
+        </ul>
+      </div>
+      <div class="d-none d-lg-block">
+        <a href="#contact" class="btn btn-primary rounded-pill px-4">Contact Me</a>
+      </div>
+    </div>
+  </nav>
+
+  <section id="home" class="container py-5 mt-4">
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-5 mb-lg-0">
+                <span class="badge bg-primary bg-opacity-10 text-primary mb-3 px-3 py-2 rounded-pill">
+                    AVAILABLE FOR NEW PROJECTS
+                </span>
+        <h1 class="display-4 fw-bold text-white">
+          Hi, I am <span class="text-primary">{{ profile.name }}</span>
+        </h1>
+        <h2 class="h3 text-secondary mb-4">&lt; &gt; {{ profile.role }}</h2>
+        <p class="text-muted lead mb-5">
+          {{ profile.description }}
+        </p>
+        <div class="d-flex gap-3">
+          <button class="btn btn-primary px-4 py-2 rounded-3">View My Work</button>
+          <button class="btn btn-outline-secondary text-white px-4 py-2 rounded-3">Resume</button>
+        </div>
+      </div>
+      <div class="col-lg-6 text-center">
+        <img :src="profile.image" alt="Profile Picture" class="img-fluid rounded-4 shadow-lg" style="max-height: 500px; object-fit: cover;">
+      </div>
+    </div>
+
+    <div class="row mt-5 pt-5 border-top border-secondary border-opacity-25 text-white text-center text-lg-start">
+      <div class="col-md-3 mb-3" v-for="stat in stats" :key="stat.label">
+        <h2 class="fw-bold mb-0">{{ stat.value }}</h2>
+        <small class="text-muted text-uppercase tracking-wide">{{ stat.label }}</small>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="container py-5 mt-5">
+    <div class="row">
+      <div class="col-12 mb-4">
+        <h6 class="text-primary text-uppercase tracking-wide">Profile</h6>
+        <h2 class="display-5 fw-bold text-white">About Me</h2>
+        <div class="title-underline mt-2"></div>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-lg-7 text-muted pe-lg-5">
+        <h4 class="text-white mb-3">Who I Am</h4>
+        <p>{{ about.paragraph1 }}</p>
+        <p>{{ about.paragraph2 }}</p>
+
+        <h4 class="text-white mt-5 mb-4">Experience</h4>
+        <div class="timeline">
+          <div class="timeline-item mb-4" v-for="exp in experience" :key="exp.company">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <h5 class="text-white mb-0">{{ exp.position }}</h5>
+              <span class="badge bg-secondary bg-opacity-25 text-white">{{ exp.year }}</span>
+            </div>
+            <h6 class="text-primary">{{ exp.company }}</h6>
+            <p class="small">{{ exp.description }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-5 mt-5 mt-lg-0">
+        <div class="card bg-dark border-secondary border-opacity-25 p-4 rounded-4">
+          <h4 class="text-white mb-4">Technical Proficiency</h4>
+          <div class="skill-item mb-4" v-for="skill in skills" :key="skill.name">
+            <div class="d-flex justify-content-between text-white mb-2">
+              <span>{{ skill.name }}</span>
+              <span class="text-primary">{{ skill.progress }}%</span>
+            </div>
+            <div class="progress" style="height: 6px; background-color: #1e293b;">
+              <div class="progress-bar bg-primary" role="progressbar" :style="{ width: skill.progress + '%' }" :aria-valuenow="skill.progress" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="certificates" class="container py-5 mt-5 mb-5">
+    <div class="row">
+      <div class="col-12 text-center mb-5">
+        <h6 class="text-primary text-uppercase tracking-wide">Credentials</h6>
+        <h2 class="display-5 fw-bold text-white">Certificates & Specializations</h2>
+        <p class="text-muted">A curated collection of professional certifications.</p>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4" v-for="cert in certificates" :key="cert.title">
+        <div class="card h-100 bg-dark border-secondary border-opacity-25 text-white rounded-4 overflow-hidden cert-card">
+          <div class="bg-secondary bg-opacity-25" style="height: 180px;"></div>
+          <div class="card-body p-4">
+            <small class="text-primary text-uppercase fw-bold">{{ cert.issuer }}</small>
+            <h5 class="card-title mt-2 mb-4">{{ cert.title }}</h5>
+            <div class="d-flex justify-content-between align-items-center mt-auto">
+              <small class="text-muted"><i class="bi bi-calendar"></i> {{ cert.date }}</small>
+              <a href="#" class="text-primary text-decoration-none small">View Credential &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.css"></script>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<script>
+  const { createApp } = Vue;
+
+  createApp({
+    data() {
+      return {
+        profile: {
+          name: 'Ghen Ayari', // Sesuaikan dengan namamu
+          role: 'Full Stack Developer',
+          description: 'Crafting high-performance web applications with Vue.js, Node.js, and modern UI architectures. Focused on clean code and exceptional user experiences.',
+          image: './assets/profile.jpg'
+        },
+        stats: [
+          { value: '5+', label: 'Years Exp.' },
+          { value: '40+', label: 'Projects Done' },
+          { value: '12', label: 'Certificates' },
+          { value: '99%', label: 'Client Happy' }
+        ],
+        about: {
+          paragraph1: 'I am a professional software engineer with experience building scalable web applications using Vue.js and Bootstrap. I focus on clean code and user-centric design.',
+          paragraph2: 'My journey started with a passion for creative problem-solving, which evolved into a career in front-end architecture.'
+        },
+        skills: [
+          { name: 'Vue.js / Nuxt', progress: 95 },
+          { name: 'Bootstrap 5 / Tailwind', progress: 90 },
+          { name: 'TypeScript / JavaScript', progress: 85 },
+          { name: 'UI/UX Design', progress: 80 }
+        ],
+        experience: [
+          {
+            position: 'Senior Frontend Developer',
+            company: 'TechFlow Solutions',
+            year: '2021 — PRESENT',
+            description: 'Led the development of a flagship SaaS platform using Vue 3 and the Composition API.'
+          },
+          {
+            position: 'Web UI Developer',
+            company: 'Creative Digital Agency',
+            year: '2018 — 2021',
+            description: 'Specialized in converting high-fidelity Figma designs into responsive layouts.'
+          }
+        ],
+        certificates: [
+          { issuer: 'Amazon Web Services', title: 'AWS Certified Solutions Architect', date: 'Issued 2023' },
+          { issuer: 'Google Cloud', title: 'Professional Cloud Architect', date: 'Issued 2023' },
+          { issuer: 'Meta / Coursera', title: 'Meta Front-End Developer', date: 'Issued 2022' },
+          { issuer: 'Cloud Native Foundation', title: 'Certified Kubernetes Administrator', date: 'Issued 2024' },
+          { issuer: 'UX Design Institute', title: 'UI/UX Design Specialization', date: 'Issued 2021' },
+          { issuer: 'DeepLearning.AI', title: 'Deep Learning Specialization', date: 'Issued 2023' }
+        ]
+      }
+    }
+  }).mount('#app')
+</script>
+</body>
 </html>
