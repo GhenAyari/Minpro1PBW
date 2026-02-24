@@ -15,9 +15,6 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-transparent py-3">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="#">
-        <span class="text-primary">&lt;/&gt;</span> Portfolio
-      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -57,7 +54,7 @@
         <h1 class="display-4 fw-bold text-white">
           Hi, I am <span class="text-primary">{{ profile.name }}</span>
         </h1>
-        <h2 class="h3 text-secondary mb-4">&lt; &gt; {{ profile.role }}</h2>
+        <h2 class="h3 text-secondary mb-4">{{ profile.role }}</h2>
         <p class="text-light lead mb-5">
           {{ profile.description }}
         </p>
@@ -117,8 +114,6 @@
         <div class="card h-100 bg-dark border-secondary border-opacity-25 text-white rounded-4 overflow-hidden cert-card">
           <div class="bg-secondary bg-opacity-25" style="height: 180px;"></div>
           <div class="card-body p-4">
-            <small class="text-primary text-uppercase fw-bold">{{ cert.issuer }}</small>
-            <h5 class="card-title mt-2 mb-4">{{ cert.title }}</h5>
             <div class="d-flex justify-content-between align-items-center mt-auto">
               <small class="text-muted"><i class="bi bi-calendar"></i> {{ cert.date }}</small>
               <a href="#" class="text-primary text-decoration-none small">View Credential &rarr;</a>
@@ -160,14 +155,13 @@
                   'I’m continuously learning and exploring new technologies to improve my skills.'
         },
         weapons: [
+          { name: 'Java', iconClass: 'devicon-java-plain colored' },
+          { name: 'Kotlin', iconClass: 'devicon-kotlin-plain colored' },
+          { name: 'Kotlin Multiplatform', iconClass: 'devicon-kotlin-plain colored' },
+          // Karena Devicon belum punya logo resmi Ktor, kita pakai icon Server dari Bootstrap
           { name: 'Python', iconClass: 'devicon-python-plain colored' },
-          { name: 'Flutter', iconClass: 'devicon-flutter-plain colored' },
-          { name: 'Dart', iconClass: 'devicon-dart-plain colored' },
-          { name: 'Vue.js', iconClass: 'devicon-vuejs-plain colored' },
-          { name: 'Bootstrap', iconClass: 'devicon-bootstrap-plain colored' },
-          { name: 'HTML5', iconClass: 'devicon-html5-plain colored' },
-          { name: 'CSS3', iconClass: 'devicon-css3-plain colored' },
-          { name: 'MySQL', iconClass: 'devicon-mysql-original colored' }
+          { name: 'PyTorch', iconClass: 'devicon-pytorch-original colored' },
+          { name: 'TensorFlow', iconClass: 'devicon-tensorflow-original colored' }
         ],
         experience: [
           {
