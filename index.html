@@ -82,7 +82,36 @@
         <h6 class="text-primary text-uppercase tracking-wide">Profile</h6>
         <h2 class="display-5 fw-bold text-white">About Me</h2>
         <div class="title-underline mt-2 mb-5"></div>
+        <div class="row mt-5 pt-4 border-top border-secondary border-opacity-25">
+          <div class="col-12">
+            <h4 class="text-white mb-4">{{ lang === 'en' ? 'Journey & Experience' : 'Perjalanan & Pengalaman' }}</h4>
+            <div class="d-flex flex-column flex-md-row gap-4">
 
+              <div class="flex-fill p-4 rounded-4 bg-dark border border-secondary border-opacity-25 experience-card">
+                <div class="d-flex align-items-center mb-3">
+                        <span class="badge bg-primary bg-opacity-10 text-primary p-2 rounded-3 me-3">
+                            <i class="bi bi-mortarboard-fill"></i>
+                        </span>
+                  <span class="text-secondary small fw-bold text-uppercase tracking-wider">2021 — 2024</span>
+                </div>
+                <h5 class="text-white mb-1">Madrasah Aliyah Negeri 2 Samarinda</h5>
+                <p class="text-muted small mb-0">{{ lang === 'en' ? 'Senior High School Graduate' : 'Lulusan Madrasah Aliyah' }}</p>
+              </div>
+
+              <div class="flex-fill p-4 rounded-4 bg-dark border border-secondary border-opacity-25 experience-card">
+                <div class="d-flex align-items-center mb-3">
+                        <span class="badge bg-primary bg-opacity-10 text-primary p-2 rounded-3 me-3">
+                            <i class="bi bi-book-half"></i>
+                        </span>
+                  <span class="text-secondary small fw-bold text-uppercase tracking-wider">2024 — PRESENT</span>
+                </div>
+                <h5 class="text-white mb-1">Mulawarman University</h5>
+                <p class="text-muted small mb-0 text-primary fw-semibold">{{ lang === 'en' ? 'Information Systems Student' : 'Mahasiswa Sistem Informasi' }}</p>
+              </div>
+
+            </div>
+          </div>
+        </div>
         <h4 class="text-white mb-3">{{ content[lang].whoIAm }}</h4>
         <p style="white-space: pre-line;">{{ content[lang].p1 }}</p>
         <p>{{ content[lang].p2 }}</p>
