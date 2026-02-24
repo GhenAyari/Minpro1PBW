@@ -66,12 +66,6 @@
       </div>
     </div>
 
-    <div class="row mt-5 pt-5 border-top border-secondary border-opacity-25 text-white text-center text-lg-start">
-      <div class="col-md-3 mb-3" v-for="stat in stats" :key="stat.label">
-        <h2 class="fw-bold mb-0">{{ stat.value }}</h2>
-        <small class="text-muted text-uppercase tracking-wide">{{ stat.label }}</small>
-      </div>
-    </div>
   </section>
 
   <section id="about" class="container py-5 mt-5">
@@ -83,24 +77,12 @@
       </div>
     </div>
     <div class="row mt-4">
-      <div class="col-lg-7 text-muted pe-lg-5">
+      <div class="col-lg-7 text-light pe-lg-5">
         <h4 class="text-white mb-3">Who I Am</h4>
         <p>{{ about.paragraph1 }}</p>
         <p>{{ about.paragraph2 }}</p>
 
-        <h4 class="text-white mt-5 mb-4">Experience</h4>
-        <div class="timeline">
-          <div class="timeline-item mb-4" v-for="exp in experience" :key="exp.company">
-            <div class="d-flex justify-content-between align-items-center mb-1">
-              <h5 class="text-white mb-0">{{ exp.position }}</h5>
-              <span class="badge bg-secondary bg-opacity-25 text-white">{{ exp.year }}</span>
-            </div>
-            <h6 class="text-primary">{{ exp.company }}</h6>
-            <p class="small">{{ exp.description }}</p>
-          </div>
-        </div>
       </div>
-
       <div class="col-lg-5 mt-5 mt-lg-0">
         <div class="card bg-dark border-secondary border-opacity-25 p-4 rounded-4">
           <h4 class="text-white mb-4">Technical Proficiency</h4>
@@ -158,9 +140,9 @@
         profile: {
           name: 'Ghendida Gantari Ayari', // Sesuaikan dengan namamu
           role: 'Student',
-          description: 'Information Systems student focusing on Mobile App Development and Machine Learning.\n' +
-                  'Experienced in building academic and personal projects while exploring AI models and mobile system architecture.\n' +
-                  'Driven to create scalable, intelligent, and impactful applications.',
+          description: 'Information Systems student with a strong interest in Mobile Development and Cloud Computing.\n' +
+                  'Passionate about building scalable mobile applications powered by modern cloud technologies.\n' +
+                  'Continuously learning and improving to create impactful digital solutions.',
           image: './assets/profile.jpg'
         },
         stats: [
@@ -170,8 +152,9 @@
           { value: '99%', label: 'Client Happy' }
         ],
         about: {
-          paragraph1: 'I am a professional software engineer with experience building scalable web applications using Vue.js and Bootstrap. I focus on clean code and user-centric design.',
-          paragraph2: 'My journey started with a passion for creative problem-solving, which evolved into a career in front-end architecture.'
+          paragraph1: 'I started my journey in technology with curiosity about how applications work behind the scenes.',
+          paragraph2: 'Today, I focus on Mobile Development and Cloud Computing, building projects that combine user-friendly design with scalable systems.\n' +
+                  'I’m continuously learning and exploring new technologies to improve my skills.'
         },
         skills: [
           { name: 'Vue.js / Nuxt', progress: 95 },
