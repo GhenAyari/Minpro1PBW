@@ -15,9 +15,9 @@ Website ini dibuat menggunakan kombinasi teknologi berikut agar ringan, responsi
 
 ---
 
-## 🌟 Sorotan Fitur & Penjelasan Kode
+##  Fitur & Penjelasan Kode
 
-### 1. 🌐 Dynamic Bilingual Navbar (Fitur Dwibahasa)
+### 1. Dynamic Bilingual Navbar (Fitur Dwibahasa)
 **Tampilan:**
 ![img.png](img.png)
 
@@ -26,7 +26,7 @@ Navbar ini dibuat responsif menggunakan komponen `navbar-collapse` bawaan Bootst
 
 Saat tombol bahasa diklik, method `toggleLanguage()` dipanggil untuk mengubah nilai variabel `lang`. Karena sifat *reactivity* dari Vue, seluruh teks di HTML yang diikat menggunakan sintaks *mustache* (contoh: `{{ content[lang].role }}`) akan otomatis berganti bahasa saat itu juga secara instan.
 
-### 2. 🦸‍♂️ Hero Section (Perkenalan Diri)
+### 2. Hero Section (Perkenalan Diri)
 **Tampilan:**
 ![img_1.png](img_1.png)
 **Penjelasan Kode:**
@@ -34,7 +34,7 @@ Bagian ini menggunakan sistem Grid Bootstrap (`row` dan `col-lg-6`) agar teks da
 
 Foto profil diberikan manipulasi CSS class `.rounded-4` dan `.shadow-lg` agar terlihat modern dan menonjol dari latar belakang gelap. Teks deskripsi memanggil data langsung dari Vue instance agar terintegrasi dengan sistem dwibahasa, serta ditambahkan `style="white-space: pre-line;"` di HTML agar format *enter/line-break* dari data JavaScript tetap terbaca.
 
-### 3. 🧠 About Me
+### 3. About Me
 **Tampilan:**
 ![img_2.png](img_2.png)
 
@@ -43,7 +43,7 @@ Section ini dibagi menjadi dua kolom. Kolom kiri untuk deskripsi personal, dan k
 
 Daripada menulis elemen HTML satu per satu untuk setiap logo teknologi, saya makai *directive* `v-for="weapon in weapons"` dari Vue. Vue akan melakukan *looping* pada array data keahlian saya (Java, Kotlin, Python, TensorFlow, dll) dan otomatis me-render *grid* logo tersebut. Jika nanti saya belajar atau menguasai teknologi baru, saya cuma perlu menambahkannya ke dalam *array* JavaScript, dan tampilan HTML akan otomatis menyesuaikan. *Clean code!*
 
-### 4. 📜 Certificates Gallery
+### 4. Certificates Gallery
 **Tampilan:**
 ![img_3.png](img_3.png)
 
